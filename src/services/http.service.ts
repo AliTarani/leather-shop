@@ -98,12 +98,12 @@ const put = <T>(
 };
 
 // Function to make DELETE requests
-const remove = <T>(
+const remove = (
   url: string
 ): { request: Promise<any>; cancel: () => void } => {
   const controller = new AbortController();
   const request = axiosInstance
-    .delete<T>(url, { signal: controller.signal })
+    .delete(url, { signal: controller.signal })
     .then((response) => response.data);
 
   return {
