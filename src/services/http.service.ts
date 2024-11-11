@@ -47,13 +47,13 @@ axiosInstance.interceptors.response.use(
 );
 
 // Function to make GET requests
-const get = (
+const get = <T>(
   url: string,
   params: Record<string, any> = {}
 ): { request: Promise<any>; cancel: () => void } => {
   const controller = new AbortController();
   const request = axiosInstance
-    .get(url, {
+    .get<T[]>(url, {
       params,
       signal: controller.signal, // Pass the controller's signal to cancel the request
     })
@@ -66,13 +66,13 @@ const get = (
 };
 
 // Function to make POST requests
-const post = (
+const post = <T>(
   url: string,
   data: any
 ): { request: Promise<any>; cancel: () => void } => {
   const controller = new AbortController();
   const request = axiosInstance
-    .post(url, data, { signal: controller.signal })
+    .post<T>(url, data, { signal: controller.signal })
     .then((response) => response.data);
 
   return {
@@ -82,13 +82,13 @@ const post = (
 };
 
 // Function to make PUT requests
-const put = (
+const put = <T>(
   url: string,
   data: any
 ): { request: Promise<any>; cancel: () => void } => {
   const controller = new AbortController();
   const request = axiosInstance
-    .put(url, data, { signal: controller.signal })
+    .put<T>(url, data, { signal: controller.signal })
     .then((response) => response.data);
 
   return {
@@ -98,10 +98,12 @@ const put = (
 };
 
 // Function to make DELETE requests
-const remove = (url: string): { request: Promise<any>; cancel: () => void } => {
+const remove = <T>(
+  url: string
+): { request: Promise<any>; cancel: () => void } => {
   const controller = new AbortController();
   const request = axiosInstance
-    .delete(url, { signal: controller.signal })
+    .delete<T>(url, { signal: controller.signal })
     .then((response) => response.data);
 
   return {
