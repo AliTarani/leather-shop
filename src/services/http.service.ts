@@ -1,4 +1,4 @@
-import axios, { CancelTokenSource } from "axios";
+import axios from "axios";
 
 // Create a new Axios instance
 const axiosInstance = axios.create({
@@ -8,9 +8,6 @@ const axiosInstance = axios.create({
     "Content-Type": "application/json", // Default content type
   },
 });
-
-// Cancel token management
-let cancelTokenSource: CancelTokenSource | null = null;
 
 // Set up request interceptor to add authorization token
 axiosInstance.interceptors.request.use(
@@ -49,57 +46,68 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-// Utility to cancel ongoing requests
-const cancelRequest = () => {
-  if (cancelTokenSource) {
-    cancelTokenSource.cancel("Request cancelled by the user");
-    cancelTokenSource = axios.CancelToken.source(); // Reset the cancel source
-  }
-};
-
-// Utility to create a Cancel Token for specific requests
-const getCancelToken = () => {
-  cancelTokenSource = axios.CancelToken.source();
-  return cancelTokenSource.token;
-};
-
 // Function to make GET requests
 const get = (
   url: string,
-  params: Record<string, any> = {},
-  cancelToken: any = null
-): Promise<any> => {
-  return axiosInstance
+  params: Record<string, any> = {}
+): { request: Promise<any>; cancel: () => void } => {
+  const controller = new AbortController();
+  const request = axiosInstance
     .get(url, {
       params,
-      cancelToken,
+      signal: controller.signal, // Pass the controller's signal to cancel the request
     })
     .then((response) => response.data); // Return the response data directly
+
+  return {
+    request,
+    cancel: () => controller.abort(),
+  };
 };
 
 // Function to make POST requests
 const post = (
   url: string,
-  data: any,
-  cancelToken: any = null
-): Promise<any> => {
-  return axiosInstance
-    .post(url, data, { cancelToken })
+  data: any
+): { request: Promise<any>; cancel: () => void } => {
+  const controller = new AbortController();
+  const request = axiosInstance
+    .post(url, data, { signal: controller.signal })
     .then((response) => response.data);
+
+  return {
+    request,
+    cancel: () => controller.abort(),
+  };
 };
 
 // Function to make PUT requests
-const put = (url: string, data: any, cancelToken: any = null): Promise<any> => {
-  return axiosInstance
-    .put(url, data, { cancelToken })
+const put = (
+  url: string,
+  data: any
+): { request: Promise<any>; cancel: () => void } => {
+  const controller = new AbortController();
+  const request = axiosInstance
+    .put(url, data, { signal: controller.signal })
     .then((response) => response.data);
+
+  return {
+    request,
+    cancel: () => controller.abort(),
+  };
 };
 
 // Function to make DELETE requests
-const remove = (url: string, cancelToken: any = null): Promise<any> => {
-  return axiosInstance
-    .delete(url, { cancelToken })
+const remove = (url: string): { request: Promise<any>; cancel: () => void } => {
+  const controller = new AbortController();
+  const request = axiosInstance
+    .delete(url, { signal: controller.signal })
     .then((response) => response.data);
+
+  return {
+    request,
+    cancel: () => controller.abort(),
+  };
 };
 
 // Expose the service functions
@@ -108,6 +116,4 @@ export default {
   post,
   put,
   delete: remove, // Renaming delete to avoid conflicts with JS keyword
-  cancelRequest,
-  getCancelToken,
 };
