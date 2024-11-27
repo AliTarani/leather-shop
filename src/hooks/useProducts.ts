@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import crudService from "../services/crud.service";
+
+import crudService from "../core/services/crud.service";
 import Product from "../types/product.type";
 
 const productService = crudService("/products");
