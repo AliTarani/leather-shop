@@ -1,4 +1,3 @@
-import ErrorBoundary from "./components/ErrorBoundary";
 import "./App.css";
 
 let MyRes: any;
@@ -17,10 +16,8 @@ function App() {
   }
   return (
     <>
-      <ErrorBoundary>
-        <h1> App </h1>
-        {MyRes}
-      </ErrorBoundary>
+      <h1> App </h1>
+      {MyRes}
     </>
   );
 }
