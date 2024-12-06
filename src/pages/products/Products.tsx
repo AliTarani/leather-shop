@@ -7,10 +7,6 @@ const ProductPage = () => {
   const { products } = useProducts();
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  // Filter products based on the search term
-  // const filteredProducts = products.filter((product) =>
-  //   product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
   const filteredProducts = search<Product>(products, searchTerm, {
     keys: ["name", "description"],
   });
