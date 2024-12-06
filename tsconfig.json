@@ -8,7 +8,9 @@
     "baseUrl": "./src",
     "paths": {
       "@core/*": ["core/*"]
-    }
+    },
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx"
   },
 
 }
