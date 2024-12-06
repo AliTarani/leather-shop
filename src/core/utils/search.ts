@@ -1,5 +1,5 @@
-export function search(
-  dataSource: Array<any>,
+export function search<T>(
+  dataSource: Array<T>,
   filter: string,
   config: { keys: Array<string> }
 ) {
