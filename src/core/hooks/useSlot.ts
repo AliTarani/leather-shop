@@ -13,8 +13,19 @@ export const useSlot = (
   return context;
 };
 
-export function useSlotProps<Props>(props: Props, slot: string): Props {
-  const slots = useContext(slotContext);
+export function useSlotProps<Props>(
+  props: Props & { slot?: string },
+  defaultSlot: string
+): Props {
+  const slots = useContext(slotContext); // Ensure the hook is always called
 
-  return { ...slots[slot], slot, ...props };
+  // Determine the effective slot
+  const slot = props.slot || defaultSlot;
+
+  // Return the original props if no slot is defined
+  if (!slot) return props;
+
+  // Return merged props with slot content
+  const slotProps = slots[slot] || {}; // Handle cases where the slot doesn't exist
+  return { ...slotProps, slot, ...props } as Props;
 }
