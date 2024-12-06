@@ -1,15 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import * as Comlink from "comlink";
+
 import useProducts from "../../features/products/hooks/useProducts";
-import { search } from "../../core/utils/search";
 import Product from "../../features/products/types/product.type";
+import { type Exposed } from "../../features/products/workers/filter-products.worker";
+
+const worker = new Worker(
+  new URL(
+    "../../features/products/workers/filter-products.worker",
+    import.meta.url
+  ),
+  {
+    type: "module",
+  }
+);
+
+const filteredProducts = Comlink.wrap<Exposed>(worker);
+
+async function searchProducts(allProducts: Array<Product>, input: string) {
+  return filteredProducts.searchProducts(allProducts, input);
+}
 
 const ProductPage = () => {
   const { products } = useProducts();
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filteredProducts, setFilteredProducts] =
+    useState<Array<Product>>(products);
 
-  const filteredProducts = search<Product>(products, searchTerm, {
-    keys: ["name", "description"],
-  });
+  useEffect(() => {
+    searchProducts(products, searchTerm).then((res) => {
+      setFilteredProducts(res);
+    });
+  }, [products, searchTerm]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
