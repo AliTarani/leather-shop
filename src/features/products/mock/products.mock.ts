@@ -5,7 +5,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 1,
     name: "کیف چرم دستی مردانه",
     price: 799000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف چرم با طراحی خاص و مقاوم برای استفاده روزمره. مناسب برای حمل لوازم ضروری.",
   },
@@ -13,7 +13,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 2,
     name: "کفش چرم زنانه",
     price: 1490000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کفش چرم زنانه با طراحی شیک و راحت برای استفاده روزانه. مناسب برای تمام فصل‌ها.",
   },
@@ -21,7 +21,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 3,
     name: "کمربند چرم اصل",
     price: 450000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کمربند چرم اصل با دوخت محکم و طراحی ساده برای استفاده روزمره.",
   },
@@ -29,7 +29,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 4,
     name: "کیف چرم زنانه",
     price: 950000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف چرم زنانه با طراحی زیبا و فضای بزرگ برای حمل وسایل ضروری.",
   },
@@ -37,7 +37,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 5,
     name: "کیف پول چرم مردانه",
     price: 350000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف پول چرم مردانه با طراحی کلاسیک و فضاهای متعدد برای کارت‌ها و پول.",
   },
@@ -45,7 +45,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 6,
     name: "کیف دوشی چرم",
     price: 1100000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف دوشی چرم با طراحی مدرن و جادار، مناسب برای حمل وسایل کوچک.",
   },
@@ -53,14 +53,14 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 7,
     name: "جاکارتی چرم",
     price: 250000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description: "جاکارتی چرم با طراحی ساده و جاگذاری مناسب کارت‌ها و پول.",
   },
   {
     id: 8,
     name: "کیف لپ‌تاپ چرم",
     price: 1450000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف لپ‌تاپ چرم با طراحی مقاوم و فضای کافی برای حمل لپ‌تاپ و لوازم جانبی.",
   },
@@ -68,7 +68,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 9,
     name: "کوله پشتی چرم",
     price: 1200000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کوله پشتی چرم با طراحی شیک و مقاوم برای استفاده روزانه و سفر.",
   },
@@ -76,7 +76,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 10,
     name: "دستبند چرم مردانه",
     price: 150000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "دستبند چرم مردانه با طراحی ساده و شیک، مناسب برای استفاده روزانه.",
   },
@@ -84,7 +84,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 11,
     name: "کفش چرم مردانه",
     price: 1800000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کفش چرم مردانه با طراحی راحت و مناسب برای استفاده در مناسبت‌های مختلف.",
   },
@@ -92,7 +92,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 12,
     name: "کیف چرم گردنی",
     price: 650000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف چرم گردنی با طراحی کوچک و کاربردی، مناسب برای حمل وسایل کوچک مانند موبایل و کارت.",
   },
@@ -100,7 +100,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 13,
     name: "کیف پول چرم زنانه",
     price: 400000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف پول چرم زنانه با طراحی مدرن و فضای مناسب برای کارت‌ها و اسکناس.",
   },
@@ -108,21 +108,21 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 14,
     name: "پاپوش چرم مردانه",
     price: 600000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description: "پاپوش چرم مردانه با طراحی راحت و مناسب برای استفاده خانگی.",
   },
   {
     id: 15,
     name: "کیف دوشی چرم زنانه",
     price: 950000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description: "کیف دوشی چرم زنانه با طراحی شیک و مقاوم برای استفاده روزمره.",
   },
   {
     id: 16,
     name: "کیف لپ‌تاپ چرم زنانه",
     price: 1400000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف لپ‌تاپ چرم زنانه با طراحی جادار و مدرن، مناسب برای حمل لپ‌تاپ و لوازم جانبی.",
   },
@@ -130,7 +130,7 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 17,
     name: "جاکارتی چرم زنانه",
     price: 200000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "جاکارتی چرم زنانه با طراحی زیبا و فضای کافی برای کارت‌های بانکی.",
   },
@@ -138,21 +138,21 @@ const ALL_PRODUCTS: Array<Product> = [
     id: 18,
     name: "کیف چرم رسمی مردانه",
     price: 1300000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description: "کیف چرم رسمی مردانه برای استفاده در مناسبت‌های کاری و رسمی.",
   },
   {
     id: 19,
     name: "دستبند چرم زنانه",
     price: 180000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description: "دستبند چرم زنانه با طراحی ظریف و شیک برای استفاده روزانه.",
   },
   {
     id: 20,
     name: "کیف دوشی چرم مردانه",
     price: 1150000,
-    image: "/assets/images/products/1.jpg",
+    image: "1.jpg",
     description:
       "کیف دوشی چرم مردانه با طراحی مدرن و فضای مناسب برای وسایل روزمره.",
   },
